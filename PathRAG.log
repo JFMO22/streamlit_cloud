@@ -1,0 +1,324 @@
+2025-04-15 16:51:29,232 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/0ff4b619239833b8bc969d167fc0ca42dedcfac840772fb0fb107b161669fb3e
+2025-04-15 16:51:29,234 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-15 16:51:29,235 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-15 16:51:29,236 - PathRAG - INFO - Load KV text_chunks with 3 data
+2025-04-15 16:51:29,244 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/0ff4b619239833b8bc969d167fc0ca42dedcfac840772fb0fb107b161669fb3e/graph_chunk_entity_relation.graphml with 46 nodes, 26 edges
+2025-04-15 16:52:12,880 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-15 16:52:12,882 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-15 16:52:12,884 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-15 16:52:12,886 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-15 16:52:12,918 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 10:30:24,993 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 10:30:24,994 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 10:30:24,995 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 10:30:24,996 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 10:30:25,016 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 10:33:07,446 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 10:33:07,447 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 10:33:07,449 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 10:33:07,450 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 10:33:07,472 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 11:24:10,610 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 11:24:10,612 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 11:24:10,613 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 11:24:10,615 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 11:24:10,638 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 11:32:05,967 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 11:32:05,968 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 11:32:05,969 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 11:32:05,970 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 11:32:05,992 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 11:49:02,769 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 11:49:02,770 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 11:49:02,771 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 11:49:02,772 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 11:49:02,792 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 12:12:37,228 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 12:12:37,230 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 12:12:37,231 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 12:12:37,232 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 12:12:37,252 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 14:39:26,959 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 14:39:26,960 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 14:39:26,962 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 14:39:26,963 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 14:39:26,988 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 15:56:26,260 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 15:56:26,261 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 15:56:26,282 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 15:56:26,283 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 15:56:26,311 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 16:31:45,487 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 16:31:45,488 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 16:31:45,489 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 16:31:45,490 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 16:31:45,511 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 16:50:56,999 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 16:50:57,000 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 16:50:57,001 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 16:50:57,002 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 16:50:57,023 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 16:57:34,075 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 16:57:34,077 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 16:57:34,078 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 16:57:34,079 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 16:57:34,103 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 17:20:46,006 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 17:20:46,007 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 17:20:46,009 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 17:20:46,010 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 17:20:46,031 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 17:32:21,991 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 17:32:21,993 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 17:32:21,994 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 17:32:21,996 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 17:32:22,022 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 17:46:47,774 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-19 17:46:47,775 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-19 17:46:47,776 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-19 17:46:47,777 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-19 17:46:47,796 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-19 18:01:42,149 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:01:45,357 - PathRAG - INFO - Local query uses 40 entites, 9 relations, 3 text units
+2025-04-19 18:01:45,983 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-19 18:02:06,203 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:02:07,375 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:02:07,783 - PathRAG - INFO - Global query uses 50 entites, 40 relations, 3 text units
+2025-04-19 18:03:02,461 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:03:03,466 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:03:03,943 - PathRAG - INFO - Global query uses 36 entites, 40 relations, 3 text units
+2025-04-19 18:04:09,676 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:04:10,883 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:04:11,379 - PathRAG - INFO - Global query uses 48 entites, 40 relations, 3 text units
+2025-04-19 18:04:56,590 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:04:57,926 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:04:58,471 - PathRAG - INFO - Global query uses 38 entites, 40 relations, 3 text units
+2025-04-19 18:05:17,583 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:05:18,506 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:05:18,949 - PathRAG - INFO - Global query uses 50 entites, 40 relations, 3 text units
+2025-04-19 18:05:57,202 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:05:58,492 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:05:58,985 - PathRAG - INFO - Global query uses 52 entites, 40 relations, 3 text units
+2025-04-19 18:06:28,415 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:06:29,753 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:06:30,230 - PathRAG - INFO - Global query uses 40 entites, 40 relations, 3 text units
+2025-04-19 18:06:49,620 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:06:50,916 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:06:51,417 - PathRAG - INFO - Global query uses 46 entites, 40 relations, 3 text units
+2025-04-19 18:07:18,983 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:07:20,296 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:07:20,808 - PathRAG - INFO - Global query uses 45 entites, 40 relations, 3 text units
+2025-04-19 18:07:40,534 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:07:41,456 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:07:42,092 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-19 18:08:11,095 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:08:11,858 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:08:13,342 - PathRAG - INFO - Global query uses 49 entites, 40 relations, 3 text units
+2025-04-19 18:09:14,808 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:09:15,862 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:09:16,377 - PathRAG - INFO - Global query uses 43 entites, 40 relations, 3 text units
+2025-04-19 18:10:32,978 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:10:34,114 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:10:35,082 - PathRAG - INFO - Global query uses 51 entites, 40 relations, 3 text units
+2025-04-19 18:10:57,304 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:10:59,061 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:10:59,570 - PathRAG - INFO - Global query uses 44 entites, 40 relations, 3 text units
+2025-04-19 18:11:21,860 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:11:23,260 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:11:23,990 - PathRAG - INFO - Global query uses 44 entites, 40 relations, 3 text units
+2025-04-19 18:12:41,992 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:12:42,931 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:12:43,443 - PathRAG - INFO - Global query uses 48 entites, 40 relations, 3 text units
+2025-04-19 18:13:14,677 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:13:16,730 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:13:17,396 - PathRAG - INFO - Global query uses 51 entites, 40 relations, 3 text units
+2025-04-19 18:13:38,891 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:13:39,517 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:13:43,876 - PathRAG - INFO - Global query uses 42 entites, 40 relations, 3 text units
+2025-04-19 18:14:13,121 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:14:13,991 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:14:14,666 - PathRAG - INFO - Global query uses 55 entites, 40 relations, 3 text units
+2025-04-19 18:14:45,867 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:14:47,168 - PathRAG - INFO - Local query uses 40 entites, 9 relations, 3 text units
+2025-04-19 18:14:47,668 - PathRAG - INFO - Global query uses 44 entites, 40 relations, 3 text units
+2025-04-19 18:15:10,961 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:15:11,779 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:15:12,331 - PathRAG - INFO - Global query uses 48 entites, 40 relations, 3 text units
+2025-04-19 18:16:31,041 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:16:31,947 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:16:32,455 - PathRAG - INFO - Global query uses 44 entites, 40 relations, 3 text units
+2025-04-19 18:17:23,460 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:17:24,207 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:17:24,940 - PathRAG - INFO - Global query uses 42 entites, 40 relations, 3 text units
+2025-04-19 18:18:40,689 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:18:41,411 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:18:41,955 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-19 18:19:21,388 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:19:22,221 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:19:22,708 - PathRAG - INFO - Global query uses 42 entites, 40 relations, 3 text units
+2025-04-19 18:19:53,473 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:19:54,975 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:19:55,592 - PathRAG - INFO - Global query uses 54 entites, 40 relations, 3 text units
+2025-04-19 18:27:45,163 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:27:46,613 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:27:47,156 - PathRAG - INFO - Global query uses 52 entites, 40 relations, 3 text units
+2025-04-19 18:28:16,224 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:28:17,317 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:28:17,993 - PathRAG - INFO - Global query uses 50 entites, 40 relations, 3 text units
+2025-04-19 18:28:37,850 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:28:39,028 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:28:39,659 - PathRAG - INFO - Global query uses 49 entites, 40 relations, 3 text units
+2025-04-19 18:29:32,154 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:29:33,025 - PathRAG - INFO - Local query uses 40 entites, 9 relations, 3 text units
+2025-04-19 18:29:33,860 - PathRAG - INFO - Global query uses 43 entites, 40 relations, 3 text units
+2025-04-19 18:31:04,391 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:31:05,802 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:31:06,265 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-19 18:31:26,488 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:31:27,433 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:31:28,044 - PathRAG - INFO - Global query uses 53 entites, 40 relations, 3 text units
+2025-04-19 18:31:59,647 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:32:00,697 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:32:01,291 - PathRAG - INFO - Global query uses 54 entites, 40 relations, 3 text units
+2025-04-19 18:32:27,805 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:32:29,371 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:32:29,846 - PathRAG - INFO - Global query uses 40 entites, 40 relations, 3 text units
+2025-04-19 18:32:49,204 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:32:50,135 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:32:50,659 - PathRAG - INFO - Global query uses 43 entites, 40 relations, 3 text units
+2025-04-19 18:33:14,690 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:33:16,418 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:33:16,837 - PathRAG - INFO - Global query uses 45 entites, 40 relations, 3 text units
+2025-04-19 18:33:42,242 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:33:43,095 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:33:43,675 - PathRAG - INFO - Global query uses 46 entites, 40 relations, 3 text units
+2025-04-19 18:34:19,069 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:34:19,990 - PathRAG - INFO - Local query uses 36 entites, 4 relations, 3 text units
+2025-04-19 18:34:20,471 - PathRAG - INFO - Global query uses 54 entites, 40 relations, 3 text units
+2025-04-19 18:34:39,022 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:34:40,477 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:34:41,020 - PathRAG - INFO - Global query uses 48 entites, 40 relations, 3 text units
+2025-04-19 18:35:07,478 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:35:08,435 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:35:08,936 - PathRAG - INFO - Global query uses 51 entites, 40 relations, 3 text units
+2025-04-19 18:35:28,397 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:35:29,502 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:35:30,121 - PathRAG - INFO - Global query uses 44 entites, 40 relations, 3 text units
+2025-04-19 18:35:49,971 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:35:51,012 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:35:51,479 - PathRAG - INFO - Global query uses 54 entites, 40 relations, 3 text units
+2025-04-19 18:36:38,766 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:36:39,537 - PathRAG - INFO - Local query uses 40 entites, 8 relations, 3 text units
+2025-04-19 18:36:40,082 - PathRAG - INFO - Global query uses 48 entites, 40 relations, 3 text units
+2025-04-19 18:37:10,752 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:37:12,052 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:37:12,627 - PathRAG - INFO - Global query uses 43 entites, 40 relations, 3 text units
+2025-04-19 18:37:34,536 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:37:35,421 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:37:35,868 - PathRAG - INFO - Global query uses 46 entites, 40 relations, 3 text units
+2025-04-19 18:38:09,839 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:38:10,726 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:38:11,363 - PathRAG - INFO - Global query uses 57 entites, 40 relations, 3 text units
+2025-04-19 18:38:38,367 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:38:39,519 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:38:40,114 - PathRAG - INFO - Global query uses 49 entites, 40 relations, 3 text units
+2025-04-19 18:39:02,130 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:39:03,403 - PathRAG - INFO - Local query uses 40 entites, 4 relations, 3 text units
+2025-04-19 18:39:03,970 - PathRAG - INFO - Global query uses 49 entites, 40 relations, 3 text units
+2025-04-19 18:40:14,111 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:40:15,543 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:40:16,001 - PathRAG - INFO - Global query uses 44 entites, 40 relations, 3 text units
+2025-04-19 18:40:57,135 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:40:57,886 - PathRAG - INFO - Local query uses 40 entites, 5 relations, 3 text units
+2025-04-19 18:40:58,397 - PathRAG - INFO - Global query uses 42 entites, 40 relations, 3 text units
+2025-04-19 18:41:40,162 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:41:40,926 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:41:41,584 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-19 18:42:21,279 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:42:22,074 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:42:22,542 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-19 18:42:55,883 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:42:56,807 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-19 18:42:57,368 - PathRAG - INFO - Global query uses 51 entites, 40 relations, 3 text units
+2025-04-19 18:43:14,473 - PathRAG - INFO - kw_prompt result:
+2025-04-19 18:43:15,531 - PathRAG - INFO - Local query uses 40 entites, 7 relations, 3 text units
+2025-04-19 18:43:16,033 - PathRAG - INFO - Global query uses 46 entites, 40 relations, 3 text units
+2025-04-21 17:32:29,384 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-21 17:32:29,387 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-21 17:32:29,388 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-21 17:32:29,390 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-21 17:32:29,411 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-21 20:01:44,065 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-21 20:01:44,067 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-21 20:01:44,069 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-21 20:01:44,071 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-21 20:01:44,092 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-21 20:06:41,119 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-21 20:06:41,121 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-21 20:06:41,122 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-21 20:06:41,123 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-21 20:06:41,143 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-21 21:09:19,133 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-21 21:09:19,138 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-21 21:09:19,139 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-21 21:09:19,141 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-21 21:09:19,162 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-21 23:01:28,192 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-21 23:01:28,195 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-21 23:01:28,197 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-21 23:01:28,199 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-21 23:01:28,223 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-21 23:22:43,270 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-21 23:22:43,272 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-21 23:22:43,273 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-21 23:22:43,275 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-21 23:22:43,296 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 00:20:27,748 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 00:20:27,750 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 00:20:27,752 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 00:20:27,754 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 00:20:27,782 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 00:20:37,538 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 00:20:37,540 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 00:20:37,541 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 00:20:37,542 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 00:20:37,573 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 00:36:46,041 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 00:36:46,043 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 00:36:46,044 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 00:36:46,046 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 00:36:46,067 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 10:55:52,396 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 10:55:52,400 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 10:55:52,402 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 10:55:52,403 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 10:55:52,425 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 11:39:17,272 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 11:39:17,276 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 11:39:17,278 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 11:39:17,279 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 11:39:17,299 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 11:47:44,234 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 11:47:44,236 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 11:47:44,237 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 11:47:44,238 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 11:47:44,258 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 11:54:46,974 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 11:54:46,976 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 11:54:46,977 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 11:54:46,978 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 11:54:47,001 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 13:03:29,836 - PathRAG - INFO - Logger initialized for working directory: /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783
+2025-04-22 13:03:29,838 - PathRAG - INFO - Load KV llm_response_cache with 0 data
+2025-04-22 13:03:29,840 - PathRAG - INFO - Load KV full_docs with 1 data
+2025-04-22 13:03:29,841 - PathRAG - INFO - Load KV text_chunks with 22 data
+2025-04-22 13:03:29,862 - PathRAG - INFO - Loaded graph from /Users/jfm/Library/CloudStorage/OneDrive-Personnel/Python yc Dev D4G/3 - Dev IA Asso/1 - Mon code/aghiles_streamlit/13_ia_financement/streamlit_users/storage/graph_stores/90ca2c8e0d3b493c088d866aa16c14b0e74020d735dfa22f926a4ba938994783/graph_chunk_entity_relation.graphml with 315 nodes, 197 edges
+2025-04-22 13:03:58,744 - PathRAG - INFO - kw_prompt result:
+2025-04-22 13:04:02,299 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-22 13:04:02,942 - PathRAG - INFO - Global query uses 38 entites, 40 relations, 3 text units
+2025-04-22 13:18:06,465 - PathRAG - INFO - kw_prompt result:
+2025-04-22 13:18:08,493 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-22 13:18:09,208 - PathRAG - INFO - Global query uses 47 entites, 40 relations, 3 text units
+2025-04-22 13:24:50,172 - PathRAG - INFO - kw_prompt result:
+2025-04-22 13:24:51,774 - PathRAG - INFO - Local query uses 40 entites, 6 relations, 3 text units
+2025-04-22 13:24:52,483 - PathRAG - INFO - Global query uses 41 entites, 40 relations, 3 text units
