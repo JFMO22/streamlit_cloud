@@ -4,11 +4,9 @@ Format d echange de dictionnaire :
 {
    'uid': 'uid',
    "question": ...
-   "size_answer": ...,
    "enhanced_question": ...,
    "question_is_open": close/open
    "question_on_asso": yes/no
-   "response": ...
  }
 """
 # Import des bibliothèques
@@ -20,7 +18,6 @@ from docx.oxml.text.paragraph import CT_P
 from docx.table import _Cell, Table
 from docx.text.paragraph import Paragraph
 from docx.shared import RGBColor
-from docx.shared import Pt
 import re
 from datetime import datetime 
 import logging
@@ -285,6 +282,12 @@ def Read_Questions_in_docx (
     Go_DictionUID = False 
     Text_Question = ''
 
+    # =========== modifs pour déploiement streamlit
+    # Conservation de votre variable originale
+    PathFolderSource = SCRIPT_DIR / 'output_aap'
+
+    PathForOutputsAndLogs = SCRIPT_DIR / PathForOutputsAndLogs  # Converti en objet Path
+
     # Récupération des fichiers avec chemins absolus
     FilesWithPath = [file.resolve() for file in PathFolderSource.glob('*.*')]
 
@@ -442,19 +445,35 @@ def Read_Questions_in_docx (
                                     ListDict.append ( new_dict ) 
                                     DictQuestions.clear() 
             print(ListDict)
+            
+
+            # =============== modifs pour streamlit
+            # docWork.save(os.path.join(PathForOutputsAndLogs, NameOfWorkDocument + '-with UID.docx'))
+            output_path = PathForOutputsAndLogs / f"{NameOfWorkDocument}-with UID.docx"
 
             # Sauvegarde du document
-            output_path = PathForOutputsAndLogs / f"{NameOfWorkDocument}-with UID.docx"
             docWork.save(output_path)
             
 
+            # === Effacement des fichiers sources
+            # try: 
+            #     for file in glob.glob(PathFolderSource +'*.*'):
+            #         os.remove(file)
+            # except FileNotFoundError: 
+            #     MessageError = str(datetime.now()) + ' Error encountered when deleting source docx file at the end of read_AAP function, please check' 
+            #     logging.error(MessageError)
+            #     print(MessageError)
 
-            # Suppression du fichier AAP vierge du PathFolderSource
-            try:
-                file.unlink()
-                print(f"Supprimé : {file}")
-            except Exception as e:
-                print(f"Erreur en fin de fonction read AAP lors de la suppression de {file} : {e}")
+
+            # Suppression des fichiers avec PathFolderSource existant
+            for file_path in PathFolderSource.glob('*.*'):
+                try:
+                    file_path.unlink()  # Méthode pathlib pour supprimer
+                    print(f"Supprimé : {file_path}")
+                except Exception as e:
+                    print(f"Erreur lors de la suppression de {file_path} : {e}")
+
+            #====================== fin modifs streamlit
 
         else:
             MessageError = str(datetime.now()) + ' Error encountered when reading Word docx file , please check type .docx and name of the file with no UID)' 
@@ -492,12 +511,8 @@ def Write_Answers_in_docx(List_UIDQuestionsSizeAnswer, PathFolderSource, PathFor
             for para in document.paragraphs:
                 for value in List_UIDQuestionsSizeAnswer:
                     if value["uid"] in para.text:
-                        if value["adjusted_resp"]!="": # Ajout JF pour prise en compte size
-                            Insert_Text_Paragraph(para, "", "\n" + value["adjusted_resp"]) # Ajout JF pour prise en compte size
-                            Delete_Text_Paragraph(para, value["uid"]) # Ajout JF pour prise en compte size
-                        else: # Ajout JF pour prise en compte size
-                            Insert_Text_Paragraph(para, "", "\n" + value["response"])
-                            Delete_Text_Paragraph(para, value["uid"])
+                        Insert_Text_Paragraph(para, "", "\n" + value["response"])
+                        Delete_Text_Paragraph(para, value["uid"])
 
             # === Nettoyage et remplacement dans les tables
             for table in document.tables:
@@ -512,28 +527,19 @@ def Write_Answers_in_docx(List_UIDQuestionsSizeAnswer, PathFolderSource, PathFor
                     for cell in row.cells:
                         for value in List_UIDQuestionsSizeAnswer:
                             if value["uid"] in cell.text:
-                                if value["adjusted_resp"]!="": # Ajout JF pour prise en compte size
-                                    Insert_Text_Cell(cell, "", value["adjusted_resp"]) # Ajout JF pour prise en compte size
-                                    Delete_Text_Cell(cell, value["uid"]) # Ajout JF pour prise en compte size
-                                else: # Ajout JF pour prise en compte size
-                                    Insert_Text_Cell(cell, "", value["response"])
-                                    Delete_Text_Cell(cell, value["uid"])
+                                Insert_Text_Cell(cell, "", value["response"])
+                                Delete_Text_Cell(cell, value["uid"])
 
             # === Sauvegarde du fichier final avec réponses
             timestamp = datetime.now().strftime("%Y-%m-%d_%Hh%Mmn%Ss")
             output_filename = f'{NameOfDocument.replace("-with UID", "")}_with_answers_{timestamp}.docx'
-            path_output_doc = PathForOutputsAndLogs / f'{output_filename}'
-            document.save(path_output_doc)
+            document.save(os.path.join(PathForOutputsAndLogs, output_filename))
 
             # === Génération du document Q&A séparé
             documentQA = Document()
-            title = documentQA.add_heading(
+            documentQA.add_heading(
                 f'Liste des questions/réponses pour :\n{NameOfDocument}\nHeure : {timestamp}\n', level=1
             )
-            title.style.font.size = Pt(14)
-            # Ligne de séparation
-            documentQA.add_paragraph("             _________________________________________________")
-            documentQA.add_paragraph().add_run().add_break()
 
             for value in List_UIDQuestionsSizeAnswer:
                 p = documentQA.add_paragraph()
@@ -542,33 +548,50 @@ def Write_Answers_in_docx(List_UIDQuestionsSizeAnswer, PathFolderSource, PathFor
                 run.bold = True
                 run.font.color.rgb = RGBColor(255, 0, 0)
                 documentQA.add_paragraph('\n' + value["response"] + '\n')
-                if value["adjusted_resp"]!="": # Ajout JF pour prise en compte size
-                    documentQA.add_paragraph('\n' + 'RÉPONSE RÉDUITE POUR RESPECTER LA TAILLE DEMANDÉE ' + '\n') # Ajout JF pour prise en compte size
-                    documentQA.add_paragraph('\n' + value["adjusted_resp"] + '\n') # Ajout JF pour prise en compte size
-
 
             qa_filename = f'{NameOfDocument.replace("-with UID", "")}_Q-A_{timestamp}.docx'
-            path_qa_doc = PathForOutputsAndLogs / f'{qa_filename}'
+            path_output_doc = os.path.join(PathForOutputsAndLogs, output_filename)
+            path_qa_doc = os.path.join(PathForOutputsAndLogs, qa_filename)
 
-            # Sauvegarde du document
             documentQA.save(path_qa_doc)
             documentQA = Document()
 
-        except Exception as e:
-            MessageError = str(datetime.now()) + ' Problème au début de la fonction Write AAP avec le fichier {file} : {e}'
-            logging.error(MessageError)
-            print(MessageError)
+            # === Effacement des fichiers sources "avec UID"
+            try: 
+                for file in glob.glob(PathFolderSource +'*.*'):
+                    if "UID" in os.path.basename(file):
+                        os.remove(file)
+            except FileNotFoundError: 
+                MessageError = str(datetime.now()) + ' Error encountered when deleting source docx file at the end of write_AAP function, please check' 
+                logging.error(MessageError)
+                print(MessageError)
 
-        # === Effacement du fichier source "avec UID"
-        try:
-            #file.unlink()  # Méthode pathlib pour supprimer 
-            os.remove(file) # A VERIFIER
-            print(f"Supprimé : {file}")
+            return path_output_doc, path_qa_doc
+
         except Exception as e:
-            MessageError = str(datetime.now()) + ' Erreur en fin de la fonction Write AAP lors de la suppression de {file} : {e}'
-            logging.error(MessageError)
-            print(MessageError)
+            print(f"[ERREUR] Problème avec le fichier {file} : {e}")
 
     print('✅ Fin du programme d’écriture des réponses dans les fichiers.')
 
-    return path_output_doc, path_qa_doc, output_filename, qa_filename
+
+# Fonctions à lancer dans le main 
+
+## Définition des arguments de la fonction Read_Questions
+Path_where_we_put_Outputs = r'./LOG'
+Folder_where_the_files_are = r'./AAP'
+
+list_of_SizeWords_OK = [
+     " MAX", " MIN", " CARACT", " CHARACT", " LIGNE", " LINE", " SIGN", " PAGE",  " PAS EXC", " NOT EXCEED", " MOTS", " WORDS"
+         ]
+
+list_of_SizeWords_KO = [
+     " SIGNAT", " MAXIMI", " MONTH", " MOIS", " ANS", " ANNé", " YEAR",  " DAY", " JOUR",
+     " DURéE", " DURATION", " IMPACT", " AMOUNT", " MONTANT"
+         ]
+
+TagQStart = "<>"
+TagQEnd = "</>"
+
+# logging.basicConfig(filename=Path_where_we_put_Outputs + r'/logs-IA_for_Asso.txt')
+
+

@@ -11,9 +11,6 @@ import pandas as pd
 import json
 from read_answer_aap import Read_Questions_in_docx, Write_Answers_in_docx
 from pathlib import Path
-from langchain_core.prompts import ChatPromptTemplate
-from langchain_openai import ChatOpenAI
-from langchain_core.output_parsers import StrOutputParser
 
 import streamlit as st
 from rag_pipelines import process_new_doc, process_existing_doc, QA_pipeline
@@ -96,47 +93,6 @@ def stream_hybridRAG_response(stream_resp, response_container):
     # 3. Récupérer la réponse complète
     st.session_state["full_response"] = response_buffer.getvalue()
     response_buffer.close()
-
-
-
-def adjust_resp(resp, size_answer): # Ajout JF pour prise en compte size
-    """
-        #### Function definition:
-        Adjust the size of the response to the user
-
-        #### Inputs :
-        **resp**: the response to be adjusted
-        **size_answer**: the size of the answer required by the user
-
-        #### Outputs:
-        A generator function containing return information in str format.
-    """
-    
-    if size_answer!="":
-        system="""
-            summarize the text {resp} into a text of {size_answer}, keeping the main ideas
-            #### Response Format:
-            it must be clear, easy to understand and the language must be the same as the input
-        """
-
-        adjust_prompt = ChatPromptTemplate.from_messages(
-            [
-                ("system", system),
-                (
-                    "human",
-                    "Here is the initial text: \n\n {resp} \n summarize it in a text of {size_answer}.",
-                ),
-            ]
-        )
-        llm_adjuster = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.5)
-        adjustor_resp = adjust_prompt | llm_adjuster | StrOutputParser()
-        adjusted_resp = adjustor_resp.invoke({"resp": resp, "size_answer": size_answer})
-    else:
-        adjusted_resp=""
-    
-    return adjusted_resp
-
-
 
 
 
@@ -464,7 +420,7 @@ def main():
 
         st.write("#### Saisie manuelle")
         user_query = st.text_input(label="Votre question", placeholder="")
-        user_query_size = st.text_input(label="Taille de réponse souhaitée", placeholder="") # Ajout JF pour prise en compte size
+        
 
         col_query1, col_query2, col_query3=st.columns(3, gap="small", vertical_alignment="center", border=False)
 
@@ -496,11 +452,12 @@ def main():
                 st.markdown(f"* Used top_k documents: **{10}**", unsafe_allow_html=True)
 
 
+
         queries = []
 
         # === Saisie manuelle ===
         if btn_process_user_query and user_query.strip() != "":
-            queries = [{"question": user_query, "size_answer": user_query_size}] # Ajout JF pour prise en compte size
+            queries = [{"question": user_query}]
             st.session_state["trigger_query"] = False  # reset
 
         # === Traitement AAP (json/docx) ===
@@ -521,55 +478,29 @@ def main():
                 TagQStart = "<>"
                 TagQEnd = "</>"
 
-                # Construction du chemin absolu pour AAP, LOG et output_aap
-                source_aap = SCRIPT_DIR / "AAP/" # répertoire pour l'AAP source (non rempli)
-                hidden_log = SCRIPT_DIR / "LOG/" # répertoire pour l'AAP avec UID + le log file (pas accessible par l'utilisateur)
-                output_aap = SCRIPT_DIR / "output_aap/" # répertoire où sera placé l'AAP avec réponses
+                #========= modif chemins pour déploiement streamlit cloud
+                # output_aap = "output_aap"
+                # safe_name = os.path.basename(uploaded_aap.name)  # Nettoyer le nom du fichier
+                # file_path = os.path.join(output_aap, safe_name)
+                # os.makedirs(os.path.dirname(file_path), exist_ok=True)
+
+                # Construction du chemin absolu pour output_aap
+                output_aap = SCRIPT_DIR / "output_aap/"
 
                 # Nettoyage du nom de fichier
                 safe_name = Path(uploaded_aap.name).name  # Exemple : "PU_P01_AAP01 - sample.docx"
 
                 # Construction du chemin complet avec chemin absolu
-                file_path_in = source_aap / safe_name 
                 file_path = output_aap / safe_name
 
                 # Création du dossier parent si nécessaire
-                file_path_in.parent.mkdir(parents=True, exist_ok=True)
-                hidden_log.parent.mkdir(parents=True, exist_ok=True)
                 file_path.parent.mkdir(parents=True, exist_ok=True)
 
                 print(f"Chemin absolu : {file_path}")
-                print(f"Chemin absolu : {file_path_in}")
-                print(f"Chemin absolu : {hidden_log}")
-
-                # Suppression des anciens fichiers source (de source_aap) au cas où pas été supprimés dans traitements anciens
-                for old_file_path in file_path_in.glob('*.*'):
-                    try:
-                        old_file_path.unlink()
-                        print(f"Supprimé : {old_file_path}")
-                    except Exception as e:
-                        print(f"Erreur lors de la suppression de l'ancien fichier source {old_file_path} : {e}")
-
-                # Suppression des anciens fichiers "avec UID" (de hidden_log) au cas où pas été supprimés dans traitements anciens
-                for old_file_path in hidden_log.glob('*.*'):
-                    try:
-                        old_file_path.unlink()
-                        print(f"Supprimé : {old_file_path}")
-                    except Exception as e:
-                        print(f"Erreur lors de la suppression de l'ancien fichier avec UID {old_file_path} : {e}")
-
-                # Suppression des anciens fichiers AAP avec réponses (de output_aap) au cas où pas été supprimés dans traitements anciens
-                for old_file_path in output_aap.glob('*.*'):
-                    try:
-                        old_file_path.unlink()
-                        print(f"Supprimé : {old_file_path}")
-                    except Exception as e:
-                        print(f"Erreur lors de la suppression de l'ancien fichier AAP avec réponses {old_file_path} : {e}")
-
 
                 #==========================                
 
-                with open(file_path_in, "wb") as f:
+                with open(file_path, "wb") as f:
                     f.write(uploaded_aap.getbuffer())
 
                 #log_dir = os.path.join(outprut_aap, "logs")
@@ -577,8 +508,9 @@ def main():
 
                 with st.spinner("🔍 Extraction des questions en cours..."):
                     extracted_questions = Read_Questions_in_docx(
-                        PathFolderSource=source_aap,
-                        PathForOutputsAndLogs=hidden_log,
+                        # PathFolderSource= "AAP/",
+                        PathFolderSource=output_aap,# + "/",
+                        PathForOutputsAndLogs="LOG/",
                         list_of_SizeWords_OK=list_of_SizeWords_OK,
                         list_of_SizeWords_KO=list_of_SizeWords_KO,
                         TagQStart=TagQStart,
@@ -624,8 +556,8 @@ def main():
             #====== déterminer si requête manuelle ou process AAP
             #1. requête manuelle
             if btn_process_user_query:
-                queries=[{"question": user_query, "size_answer": user_query_size}] # Ajout JF pour prise en compte size
-
+                queries=[{"question": user_query}]
+            
 
 
             #======parcourir les questions et les transmettre à QA pipeline
@@ -669,15 +601,6 @@ def main():
                     # 3. les métadonnées (uid, question, type), et la réponse complète du flux 1 ci dessus
                     elif isinstance(resp, dict) and 'uid' in resp:
                         resp["response"]=st.session_state["full_response"]
-                        size_answer = resp["size_answer"]  # Ajout JF pour prise en compte size
-                        if size_answer!="":  # Ajout JF pour prise en compte size
-                            adjusted_resp=adjust_resp(resp["response"], size_answer)  # Ajout JF pour prise en compte size
-                            resp["adjusted_resp"]=adjusted_resp  # Ajout JF pour prise en compte size
-
-                            st.markdown(f"#### Réponse ajustée:\n", unsafe_allow_html=True)  # Ajout JF pour prise en compte size                
-                            response_container = st.empty()  # Ajout JF pour prise en compte size
-                            st.markdown(resp["adjusted_resp"], unsafe_allow_html=True)  # Ajout JF pour prise en compte size
-
 
                         if  btn_process_user_query and btn_display_metadata:
                             st.markdown(f"**Metadata**:", unsafe_allow_html=True)
@@ -689,42 +612,49 @@ def main():
                         st.markdown(f"{resp}", unsafe_allow_html=True)
 
 
+
+
+
             # ✅ Remplir AAP: Une seule écriture à la fin
             if (btn_process_aap and all_responses_to_write):
-                output_file_path, qa_file_path, aap_filename, qa_filename = Write_Answers_in_docx(
-                    PathFolderSource=hidden_log,
-                    PathForOutputsAndLogs=output_aap,
-                    List_UIDQuestionsSizeAnswer=all_responses_to_write
-                )
+                # output_file_path, qa_file_path = Write_Answers_in_docx(
+                #     PathFolderSource="LOG",
+                #     PathForOutputsAndLogs=output_aap,
+                #     List_UIDQuestionsSizeAnswer=all_responses_to_write
+                # )
 
-                # Bouton pour télécharger le fichier Word AAP avec réponses
-                with open(output_file_path, "rb") as file:
-                    st.download_button(
-                        label="⬇️ Télécharger le document avec réponses",
-                        data=file,
-                        file_name=aap_filename,
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                    )
+                # st.success("📄 Les réponses ont été écrites dans les documents.")
 
-                # Bouton pour télécharger le fichier Q&A
-                with open(qa_file_path, "rb") as file:
-                    st.download_button(
-                        label="⬇️ Télécharger le fichier Q&A",
-                        data=file,
-                        file_name=qa_filename,
-                        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                    )
+                # Bouton pour télécharger le fichier Word avec réponses
+                # with open(output_file_path, "rb") as file:
+                #     st.download_button(
+                #         label="⬇️ Télécharger le document avec réponses",
+                #         data=file,
+                #         file_name=output_file_path.split("/")[-1],
+                #         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                #     )
+
+                # # Bouton pour télécharger le fichier Q&A
+                # with open(qa_file_path, "rb") as file:
+                #     st.download_button(
+                #         label="⬇️ Télécharger le fichier Q&A",
+                #         data=file,
+                #         file_name=qa_file_path.split("/")[-1],
+                #         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                #     )
+
+
 
             
-                #docx_file = generate_docx(all_responses_to_write)
+                docx_file = generate_docx(all_responses_to_write)
 
-                #st.success("📄 Les réponses ont été écrites dans les documents.")
-                #st.download_button(
-                #    label="⬇️ Télécharger le document avec réponses",
-                #    data=docx_file,
-                #    file_name="questions_reponses.docx",
-                #    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                #)
+                st.success("📄 Les réponses ont été écrites dans les documents.")
+                st.download_button(
+                    label="⬇️ Télécharger le document avec réponses",
+                    data=docx_file,
+                    file_name="questions_reponses.docx",
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                )
                 st.success("Document prêt pour téléchargement !")                
                             
 

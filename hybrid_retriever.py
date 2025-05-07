@@ -19,6 +19,7 @@ import dotenv
 dotenv.load_dotenv(".env")
 
 
+
 #====config llm
 model_qa_name="gpt-4o-mini"
 llm_qa = ChatOpenAI(model_name=model_qa_name, temperature=0.2, streaming=True)
