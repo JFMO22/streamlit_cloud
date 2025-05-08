@@ -1,8 +1,6 @@
 import streamlit as st
 from rag_pipelines import process_new_doc, process_existing_doc, QA_pipeline, update_hybrid_rag_wrapper
 from graphrag_retriever import load_knowledgeGraph_vis
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
 from io import StringIO
 import asyncio
 import nest_asyncio
@@ -11,15 +9,8 @@ import pandas as pd
 import json
 from read_answer_aap import Read_Questions_in_docx, Write_Answers_in_docx
 from pathlib import Path
+import traceback
 
-import streamlit as st
-from rag_pipelines import process_new_doc, process_existing_doc, QA_pipeline
-from langchain_community.document_loaders import PyPDFLoader
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from io import StringIO
-import os
-import pandas as pd
-import json
 
 # pour télécharger l'AAP en docx
 from docx import Document
@@ -93,6 +84,47 @@ def stream_hybridRAG_response(stream_resp, response_container):
     # 3. Récupérer la réponse complète
     st.session_state["full_response"] = response_buffer.getvalue()
     response_buffer.close()
+
+
+
+def adjust_resp(resp, size_answer): # Ajout JF pour prise en compte size
+    """
+        #### Function definition:
+        Adjust the size of the response to the user
+
+        #### Inputs :
+        **resp**: the response to be adjusted
+        **size_answer**: the size of the answer required by the user
+
+        #### Outputs:
+        A generator function containing return information in str format.
+    """
+    
+    if size_answer!="":
+        system="""
+            summarize the text {resp} into a text of {size_answer}, keeping the main ideas
+            #### Response Format:
+            it must be clear, easy to understand and the language must be the same as the input
+        """
+
+        adjust_prompt = ChatPromptTemplate.from_messages(
+            [
+                ("system", system),
+                (
+                    "human",
+                    "Here is the initial text: \n\n {resp} \n summarize it in a text of {size_answer}.",
+                ),
+            ]
+        )
+        llm_adjuster = ChatOpenAI(model_name="gpt-4o-mini", temperature=0.5)
+        adjustor_resp = adjust_prompt | llm_adjuster | StrOutputParser()
+        adjusted_resp = adjustor_resp.invoke({"resp": resp, "size_answer": size_answer})
+    else:
+        adjusted_resp=""
+    
+    return adjusted_resp
+
+
 
 
 
@@ -406,121 +438,165 @@ def main():
     # =============== Q/A AAP ou directe
     if page == pages[3]:
         st.write("#### Charger un AAP")
-        uploaded_aap = st.file_uploader(
-            label="Charger un AAP", 
-            type=["docx", "json"], 
-            accept_multiple_files=False, 
-            key="uploader_aap"
-        )
-        st.session_state["uploaded_aap"] = uploaded_aap
+        with st.expander("Zone formulaire AAP"):                    
+            uploaded_aap = st.file_uploader(
+                label="Glisser ou charger un formulaire", 
+                type=["docx", "json"], 
+                accept_multiple_files=False, 
+                key="uploader_aap"
+            )
+            st.session_state["uploaded_aap"] = uploaded_aap
 
-        btn_process_aap=st.button(label="Traiter", key="process_aap")
+            btn_process_aap=st.button(label="Traiter", key="process_aap")
 
         st.markdown("------------", unsafe_allow_html=True)
 
         st.write("#### Saisie manuelle")
-        user_query = st.text_input(label="Votre question", placeholder="")
-        
+        with st.expander("Zone saisie de question"):
+            user_query = st.text_input(label="Votre question", placeholder="")
+            user_query_size = st.text_input(label="Taille de réponse souhaitée", placeholder="") # Ajout JF pour prise en compte size
 
-        col_query1, col_query2, col_query3=st.columns(3, gap="small", vertical_alignment="center", border=False)
+            col_query1, col_query2, col_query3=st.columns(3, gap="small", vertical_alignment="center", border=False)
 
-        with col_query1:
-            btn_process_user_query=st.button(label="Chercher", key="process_user_query",use_container_width=False)
-        with col_query2:
-            btn_display_sources=st.checkbox(label="Afficher les sources", key="display_sources", )
-        with col_query3:
-            btn_display_metadata=st.checkbox(label="Afficher les méta données", key="display_metadata",)
+            with col_query1:
+                btn_process_user_query=st.button(label="Chercher", key="process_user_query",use_container_width=False)                
+            with col_query2:
+                btn_display_sources=st.checkbox(label="Afficher les sources", key="display_sources", )
+            with col_query3:
+                btn_display_metadata=st.checkbox(label="Afficher les méta données", key="display_metadata",)
 
+        st.markdown("------------", unsafe_allow_html=True)
 
+        # =============afficher les paramètres du rag hybride 
+        st.markdown("#### Paramètres du RAG hybride:")
+        # with st.expander("Zone formulaire AAP"):
+        # buf1, buf2,  col_reranker_select, col_top_k=st.columns([1, 1, 1, 1])
+        def reranker_template(reranker_holder):
+            # '#fa8072e6': salmon, "#008000d9": green
+            bkg_color= '#fa8072e6' if reranker_holder=='specialized' else "#008000d9"
+            return f"""<span 
+                style='
+                    background-color: {bkg_color};
+                    border-radius: 4px;
+                    padding: 2px 5px 2px 5px;
+                    color: white;'
+                > {reranker_holder}
+            </span>"""
 
-        # =============afficher les paramètres du rag hybride
-        buf1, buf2,  col_reranker_select, col_top_k=st.columns([1, 1, 1, 1])
-
-        st.markdown("#### Paramètres du RAG hybride")
         if "selected_reranker" in st.session_state and st.session_state["selected_reranker"]!="":
-            with col_reranker_select:
-                st.markdown(f"""* Used reranker: **{st.session_state["selected_reranker"]}**""", unsafe_allow_html=True)
+            # with col_reranker_select:
+            st.markdown(f"""* Reranker utilisé: **{reranker_template(st.session_state["selected_reranker"])}**""", unsafe_allow_html=True)
         else:
-            with col_reranker_select:
-                st.markdown(f"* Used reranker: **specialized**", unsafe_allow_html=True)
+            # with col_reranker_select:
+            st.markdown(f"""* Reranker utilisé: {reranker_template("specialized")}""",
+             unsafe_allow_html=True)
 
         if "top_k_docs_user" in st.session_state:
-            with col_top_k:
-                st.markdown(f"* Used top_k documents: **{st.session_state['top_k_docs_user']}**", unsafe_allow_html=True)
+            # with col_top_k:
+            st.markdown(f"* Top_k documents utilisé: **{st.session_state['top_k_docs_user']}**", unsafe_allow_html=True)
         else:
-            with col_top_k:
-                st.markdown(f"* Used top_k documents: **{10}**", unsafe_allow_html=True)
+            # with col_top_k:
+            st.markdown(f"* Top_k documents utilisé: **{10}**", unsafe_allow_html=True)
 
+        st.markdown("----", unsafe_allow_html=True)
 
 
         queries = []
 
         # === Saisie manuelle ===
         if btn_process_user_query and user_query.strip() != "":
-            queries = [{"question": user_query}]
+            queries = [{"question": user_query, "size_answer": user_query_size}] # Ajout JF pour prise en compte size
             st.session_state["trigger_query"] = False  # reset
 
         # === Traitement AAP (json/docx) ===
         elif btn_process_aap and uploaded_aap is not None:
-            st.session_state["trigger_aap"] = False  # reset
+            try:
+                st.session_state["trigger_aap"] = False  # reset
 
-            if uploaded_aap.name.endswith(".docx"):
-                st.info("📄 Traitement automatique du fichier AAP...")
+                if uploaded_aap.name.endswith(".docx"):
+                    st.info("📄 Traitement automatique du fichier AAP...")
 
-                list_of_SizeWords_OK = [
-                    " MAX", " MIN", " CARACT", " CHARACT", " LIGNE", " LINE", " SIGN", " PAGE",
-                    " PAS EXC", " NOT EXCEED", " MOTS", " WORDS"
-                ]
-                list_of_SizeWords_KO = [
-                    " SIGNAT", " MAXIMI", " MONTH", " MOIS", " ANS", " ANNé", " YEAR", " DAY", " JOUR",
-                    " DURéE", " DURATION", " IMPACT", " AMOUNT", " MONTANT"
-                ]
-                TagQStart = "<>"
-                TagQEnd = "</>"
+                    list_of_SizeWords_OK = [
+                        " MAX", " MIN", " CARACT", " CHARACT", " LIGNE", " LINE", " SIGN", " PAGE",
+                        " PAS EXC", " NOT EXCEED", " MOTS", " WORDS"
+                    ]
+                    list_of_SizeWords_KO = [
+                        " SIGNAT", " MAXIMI", " MONTH", " MOIS", " ANS", " ANNé", " YEAR", " DAY", " JOUR",
+                        " DURéE", " DURATION", " IMPACT", " AMOUNT", " MONTANT"
+                    ]
+                    TagQStart = "<>"
+                    TagQEnd = "</>"
 
-                #========= modif chemins pour déploiement streamlit cloud
-                # output_aap = "output_aap"
-                # safe_name = os.path.basename(uploaded_aap.name)  # Nettoyer le nom du fichier
-                # file_path = os.path.join(output_aap, safe_name)
-                # os.makedirs(os.path.dirname(file_path), exist_ok=True)
+                    # Construction du chemin absolu pour AAP, LOG et output_aap
+                    source_aap = SCRIPT_DIR / "AAP/" # répertoire pour l'AAP source (non rempli)
+                    hidden_log = SCRIPT_DIR / "LOG/" # répertoire pour l'AAP avec UID + le log file (pas accessible par l'utilisateur)
+                    output_aap = SCRIPT_DIR / "output_aap/" # répertoire où sera placé l'AAP avec réponses
 
-                # Construction du chemin absolu pour output_aap
-                output_aap = SCRIPT_DIR / "output_aap/"
+                    # Nettoyage du nom de fichier
+                    safe_name = Path(uploaded_aap.name).name  # Exemple : "PU_P01_AAP01 - sample.docx"
 
-                # Nettoyage du nom de fichier
-                safe_name = Path(uploaded_aap.name).name  # Exemple : "PU_P01_AAP01 - sample.docx"
+                    # Construction du chemin complet avec chemin absolu
+                    file_path_in = source_aap / safe_name 
+                    file_path = output_aap / safe_name
 
-                # Construction du chemin complet avec chemin absolu
-                file_path = output_aap / safe_name
+                    # Création du dossier parent si nécessaire
+                    file_path_in.parent.mkdir(parents=True, exist_ok=True)
+                    hidden_log.parent.mkdir(parents=True, exist_ok=True)
+                    file_path.parent.mkdir(parents=True, exist_ok=True)
 
-                # Création du dossier parent si nécessaire
-                file_path.parent.mkdir(parents=True, exist_ok=True)
+                    print(f"Chemin absolu : {file_path}")
+                    print(f"Chemin absolu : {file_path_in}")
+                    print(f"Chemin absolu : {hidden_log}")
 
-                print(f"Chemin absolu : {file_path}")
+                    # Suppression des anciens fichiers source (de source_aap) au cas où pas été supprimés dans traitements anciens
+                    for old_file_path in file_path_in.glob('*.*'):
+                        try:
+                            old_file_path.unlink()
+                            print(f"Supprimé : {old_file_path}")
+                        except Exception as e:
+                            print(f"Erreur lors de la suppression de l'ancien fichier source {old_file_path} : {e}")
 
-                #==========================                
+                    # Suppression des anciens fichiers "avec UID" (de hidden_log) au cas où pas été supprimés dans traitements anciens
+                    for old_file_path in hidden_log.glob('*.*'):
+                        try:
+                            old_file_path.unlink()
+                            print(f"Supprimé : {old_file_path}")
+                        except Exception as e:
+                            print(f"Erreur lors de la suppression de l'ancien fichier avec UID {old_file_path} : {e}")
 
-                with open(file_path, "wb") as f:
-                    f.write(uploaded_aap.getbuffer())
+                    # Suppression des anciens fichiers AAP avec réponses (de output_aap) au cas où pas été supprimés dans traitements anciens
+                    for old_file_path in output_aap.glob('*.*'):
+                        try:
+                            old_file_path.unlink()
+                            print(f"Supprimé : {old_file_path}")
+                        except Exception as e:
+                            print(f"Erreur lors de la suppression de l'ancien fichier AAP avec réponses {old_file_path} : {e}")
 
-                #log_dir = os.path.join(outprut_aap, "logs")
-                #os.makedirs(log_dir, exist_ok=True)
 
-                with st.spinner("🔍 Extraction des questions en cours..."):
-                    extracted_questions = Read_Questions_in_docx(
-                        # PathFolderSource= "AAP/",
-                        PathFolderSource=output_aap,# + "/",
-                        PathForOutputsAndLogs="LOG/",
-                        list_of_SizeWords_OK=list_of_SizeWords_OK,
-                        list_of_SizeWords_KO=list_of_SizeWords_KO,
-                        TagQStart=TagQStart,
-                        TagQEnd=TagQEnd
-                    )
+                    #==========================                
+                
+                    with open(file_path_in, "wb") as f:
+                        f.write(uploaded_aap.getbuffer())
 
-                st.success("✅ Extraction terminée")
-                st.write(f"Nombre de questions détectées : {len(extracted_questions)}")
-                queries = extracted_questions
+                    #log_dir = os.path.join(outprut_aap, "logs")
+                    #os.makedirs(log_dir, exist_ok=True)
 
+                    with st.spinner("🔍 Extraction des questions en cours..."):
+                        extracted_questions = Read_Questions_in_docx(
+                            PathFolderSource=source_aap,
+                            PathForOutputsAndLogs=hidden_log,
+                            list_of_SizeWords_OK=list_of_SizeWords_OK,
+                            list_of_SizeWords_KO=list_of_SizeWords_KO,
+                            TagQStart=TagQStart,
+                            TagQEnd=TagQEnd
+                        )
+
+                    st.success("✅ Extraction terminée")
+                    st.write(f"Nombre de questions détectées : {len(extracted_questions)}")
+                    queries = extracted_questions
+            except Exception as e:
+                print(e)
+                print(traceback.format_exc())
 
         #### rappel de la dernière Q/A traitée
         response_container = st.empty() 
@@ -548,6 +624,8 @@ def main():
         # cas question posée manuellement
         elif (user_query!="" and btn_process_user_query):
             start_process=True
+            if "all_responses_to_write" in st.session_state:                
+                del st.session_state["all_responses_to_write"]
         
         if start_process:
             #= reset de la réponse affichée
@@ -556,8 +634,8 @@ def main():
             #====== déterminer si requête manuelle ou process AAP
             #1. requête manuelle
             if btn_process_user_query:
-                queries=[{"question": user_query}]
-            
+                queries=[{"question": user_query, "size_answer": user_query_size}] # Ajout JF pour prise en compte size
+
 
 
             #======parcourir les questions et les transmettre à QA pipeline
@@ -572,7 +650,7 @@ def main():
                         # rappel de la question
                         st.markdown(f"#### Question:\n", unsafe_allow_html=True)
                         st.markdown(resp["question"])
-                        
+                        st.session_state["user_query"]=resp["question"]
 
                         st.markdown(f"#### Réponse:\n", unsafe_allow_html=True)                
                         response_container = st.empty()
@@ -601,62 +679,119 @@ def main():
                     # 3. les métadonnées (uid, question, type), et la réponse complète du flux 1 ci dessus
                     elif isinstance(resp, dict) and 'uid' in resp:
                         resp["response"]=st.session_state["full_response"]
+                        size_answer = resp["size_answer"]  # Ajout JF pour prise en compte size
+                        if size_answer!="":  # Ajout JF pour prise en compte size
+                            adjusted_resp=adjust_resp(resp["response"], size_answer)  # Ajout JF pour prise en compte size
+                            resp["adjusted_resp"]=adjusted_resp  # Ajout JF pour prise en compte size
+
+                            st.markdown(f"#### Réponse ajustée:\n", unsafe_allow_html=True)  # Ajout JF pour prise en compte size                
+                            response_container = st.empty()  # Ajout JF pour prise en compte size
+                            st.markdown(resp["adjusted_resp"], unsafe_allow_html=True)  # Ajout JF pour prise en compte size
+
 
                         if  btn_process_user_query and btn_display_metadata:
                             st.markdown(f"**Metadata**:", unsafe_allow_html=True)
                             st.json(resp)
 
                         all_responses_to_write.append(resp) 
+
+                        
                     # 4. diffusion d'un feedback str
                     elif isinstance(resp, str):                    
                         st.markdown(f"{resp}", unsafe_allow_html=True)
 
 
-
-
-
             # ✅ Remplir AAP: Une seule écriture à la fin
             if (btn_process_aap and all_responses_to_write):
-                # output_file_path, qa_file_path = Write_Answers_in_docx(
-                #     PathFolderSource="LOG",
-                #     PathForOutputsAndLogs=output_aap,
-                #     List_UIDQuestionsSizeAnswer=all_responses_to_write
-                # )
+                st.session_state["all_responses_to_write"]=all_responses_to_write
 
-                # st.success("📄 Les réponses ont été écrites dans les documents.")
-
-                # Bouton pour télécharger le fichier Word avec réponses
-                # with open(output_file_path, "rb") as file:
-                #     st.download_button(
-                #         label="⬇️ Télécharger le document avec réponses",
-                #         data=file,
-                #         file_name=output_file_path.split("/")[-1],
-                #         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                #     )
-
-                # # Bouton pour télécharger le fichier Q&A
-                # with open(qa_file_path, "rb") as file:
-                #     st.download_button(
-                #         label="⬇️ Télécharger le fichier Q&A",
-                #         data=file,
-                #         file_name=qa_file_path.split("/")[-1],
-                #         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-                #     )
-
-
-
-            
-                docx_file = generate_docx(all_responses_to_write)
-
-                st.success("📄 Les réponses ont été écrites dans les documents.")
-                st.download_button(
-                    label="⬇️ Télécharger le document avec réponses",
-                    data=docx_file,
-                    file_name="questions_reponses.docx",
-                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                output_file_path, qa_file_path, aap_filename, qa_filename = Write_Answers_in_docx(
+                    PathFolderSource=hidden_log,
+                    PathForOutputsAndLogs=output_aap,
+                    List_UIDQuestionsSizeAnswer=all_responses_to_write
                 )
+
+                st.session_state["output_file_path"]=output_file_path
+                st.session_state["qa_file_path"]=qa_file_path
+                st.session_state["aap_filename"]=aap_filename
+                st.session_state["qa_filename"]=qa_filename
+
+
+                with open(output_file_path, "rb") as file:
+                    aap_data = file.read()
+                    
+                btn_down_aap = st.download_button(
+                    label="⬇️ Télécharger le document avec réponses",
+                    data=aap_data,
+                    file_name=aap_filename,
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                    # key="download_aap_btn",  # Clé unique pour le widget
+                    help="Cliquez pour télécharger le document Word avec les réponses intégrées"
+                )
+                
+                if btn_down_aap:
+                    st.success("Téléchargement lancé avec succès!")
+
+
+
+                # Bouton pour télécharger le fichier Q&A
+                with open(qa_file_path, "rb") as file:
+                    qa_data=file.read()
+
+                btn_down_qa= st.download_button(
+                    label="⬇️ Télécharger le fichier Q&A",
+                    data=qa_data,
+                    file_name=qa_filename,
+                    mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+
+                )
+                if btn_down_qa:
+                    st.success("Téléchargement lancé avec succès!")
+            
                 st.success("Document prêt pour téléchargement !")                
-                            
+
+        # maintenir la consistance de la page (Q/R et boutons téléch AAP)
+        if "all_responses_to_write" in st.session_state and btn_process_aap==False:
+
+            output_file_path=st.session_state["output_file_path"]
+            qa_file_path=st.session_state["qa_file_path"]
+            aap_filename=st.session_state["aap_filename"]
+            qa_filename=st.session_state["qa_filename"]
+
+
+            with open(output_file_path, "rb") as file:
+                aap_data = file.read()
+                
+            btn_down_aap = st.download_button(
+                label="⬇️ Télécharger le document avec réponses",
+                data=aap_data,
+                file_name=aap_filename,
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                # key="btn_down_aap",  # Clé unique pour le widget
+                help="Cliquez pour télécharger le document Word avec les réponses intégrées"
+            )
+            
+            if btn_down_aap:
+                st.success("Téléchargement lancé avec succès!")
+
+
+            # Bouton pour télécharger le fichier Q&A
+            with open(qa_file_path, "rb") as file:
+                qa_data=file.read()
+
+            btn_down_qa= st.download_button(
+                label="⬇️ Télécharger le fichier Q&A",
+                data=qa_data,
+                file_name=qa_filename,
+                mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+
+            )
+            if btn_down_qa:
+                st.success("Téléchargement lancé avec succès!")
+                
+            
+
+
 
     # ===============Paramètres
     elif page == pages[4]:
@@ -692,11 +827,27 @@ def main():
             last_reranker=st.session_state["selected_reranker"]
         
         
-        st.write(f"Dernier reranker utilisé: {last_reranker}")
+        st.markdown("---------")
+        # st.write(f"Dernier reranker utilisé: {last_reranker}")
+        @st.dialog("Validez votre choix")
+        def vote():
+            st.markdown(f"""Cliquer sur <span 
+                style="    
+                    border-radius: 6px;
+                    border: 2px solid;
+                    padding: 6px 8px 6px 8px;
+                    margin: 0px 4px 0 4px;
+                    border-color: lightgray;
+                    "
+            >Mise à jour</span> pour activer le changement""", 
+            unsafe_allow_html=True)
+
         reranker=st.selectbox(
             "Changer de reranker",
             options=["specialized", "llm"],
+            on_change=vote
         )
+
 
         # rappel du top K
         top_k_user_input=st.empty()
@@ -718,8 +869,7 @@ def main():
             st.session_state["selected_reranker"]= reranker
             feedback= update_hybrid_rag_wrapper(reranker, top_k=top_k_docs_selected)
             st.write(f"""{feedback}""")
-                    
-
+   
     # ==============Graph
     elif page == pages[5]:
 
