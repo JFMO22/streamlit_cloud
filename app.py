@@ -11,6 +11,9 @@ from read_answer_aap import Read_Questions_in_docx, Write_Answers_in_docx
 from pathlib import Path
 import traceback
 
+from langchain_openai import ChatOpenAI
+from langchain_core.prompts import ChatPromptTemplate
+from langchain_core.output_parsers import StrOutputParser
 
 # pour télécharger l'AAP en docx
 from docx import Document
@@ -538,18 +541,19 @@ def main():
                     # Construction du chemin complet avec chemin absolu
                     file_path_in = source_aap / safe_name 
                     file_path = output_aap / safe_name
+                    file_path_log = hidden_log / safe_name # Ajout JFM Debug
 
                     # Création du dossier parent si nécessaire
                     file_path_in.parent.mkdir(parents=True, exist_ok=True)
-                    hidden_log.parent.mkdir(parents=True, exist_ok=True)
+                    file_path_log.parent.mkdir(parents=True, exist_ok=True)# Ajout JFM Debug
                     file_path.parent.mkdir(parents=True, exist_ok=True)
 
                     print(f"Chemin absolu : {file_path}")
                     print(f"Chemin absolu : {file_path_in}")
-                    print(f"Chemin absolu : {hidden_log}")
+                    print(f"Chemin absolu : {file_path_log}")# Ajout JFM Debug
 
                     # Suppression des anciens fichiers source (de source_aap) au cas où pas été supprimés dans traitements anciens
-                    for old_file_path in file_path_in.glob('*.*'):
+                    for old_file_path in source_aap.glob('*.*'):
                         try:
                             old_file_path.unlink()
                             print(f"Supprimé : {old_file_path}")
