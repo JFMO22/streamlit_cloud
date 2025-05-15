@@ -388,6 +388,13 @@ def Read_Questions_in_docx (PathFolderSource, PathForOutputsAndLogs
                                     DictQuestions.clear() 
                                     DictQuestions ["uid"] = uuid.uuid4().hex
                                     DictQuestions ["question"] = block_item.cell(row, col).text
+                                    DictQuestions ["size_answer"] = ''
+                                    DictQuestions ["enhanced_question"] = ''
+                                    DictQuestions ["question_is_open"] = ''
+                                    DictQuestions ["question_on_asso"] = ''
+                                    DictQuestions ["response"] = ''
+                                    DictQuestions ["adjusted_resp"]= ''
+
                                     below_is_a_size_for_response = False 
 
 
@@ -424,11 +431,6 @@ def Read_Questions_in_docx (PathFolderSource, PathForOutputsAndLogs
                                      
                                     else: 
                                         DictQuestions ["size_answer"] = ''
-
-                                    DictQuestions ["enhanced_question"] = ''
-                                    DictQuestions ["question_is_open"] = ''
-                                    DictQuestions ["question_on_asso"] = ''
-                                    DictQuestions ["response"] = ''
 
                                     QuestionUI = DictQuestions ["uid"]
                                     if len (block_item.columns) == 1 and len (block_item.rows) > row+1: 
