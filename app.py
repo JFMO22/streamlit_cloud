@@ -625,6 +625,8 @@ def main():
                             st.markdown(f"#### Réponse ajustée:\n", unsafe_allow_html=True)             
                             response_container = st.empty()  
                             st.markdown(resp["adjusted_resp"], unsafe_allow_html=True)  
+                        else:
+                            resp["adjusted_resp"]=""
 
 
                         if  btn_process_user_query and btn_display_metadata:
